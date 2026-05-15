@@ -11,7 +11,11 @@ export function BlogList() {
     ? `Resultados de busca para "${query}"`
     : 'Dicas e estratégias para impulsionar seu negócio';
 
-  const posts = allPosts;
+  const posts = query
+    ? allPosts.filter((post) =>
+      post.title.toLocaleLowerCase()?.includes(query.toLocaleLowerCase())
+    )
+    : allPosts;
 
   return (
     <div className="flex flex-col py-24 flex-grow h-full">
