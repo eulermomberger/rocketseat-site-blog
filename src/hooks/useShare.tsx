@@ -63,7 +63,7 @@ export const useShare = ({
       icon: <Link2 className="h-4 w-4" />,
       action: () => share('clipboard'),
     },
-  ], [share]);
+  ], [isCopied, share]);
 
   return { shareButtons };
 };
