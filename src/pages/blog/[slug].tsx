@@ -10,8 +10,10 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { Button } from '@/components/ui/button';
 import { Avatar } from '@/components/Avatar';
 import { Markdown } from '@/components/Markdown';
+import { useShare } from '@/hooks/useShare';
 
 export default function PostPage() {
   const router = useRouter();
@@ -20,6 +22,13 @@ export default function PostPage() {
     post.slug.toLowerCase() === String(slug).toLowerCase()
   );
   const publishedDate = post ? new Date(post.date).toLocaleDateString('pt-BR') : '';
+  const postUrl = `https://site.set/blog/${slug}`;
+
+  const { shareButtons } = useShare({
+    url: postUrl,
+    title: post?.title,
+    text: post?.description,
+  });
 
   if (!post) return <div>Post not found</div>;
 
@@ -76,6 +85,28 @@ export default function PostPage() {
               <Markdown content={post.body.raw} />
             </div>
           </article>
+
+          <aside className="space-y-6">
+            <div className="rounded-lg bg-gray-700">
+              <h2 className="mb-4 text-heading-xs text-gray-100">
+                Compartilhar
+              </h2>
+
+              <div className="space-y-3">
+                {shareButtons.map((provider) => (
+                  <Button
+                    key={provider.provider}
+                    onClick={() => provider.action()}
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                  >
+                    {provider.icon}
+                    {provider.name}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </main>
