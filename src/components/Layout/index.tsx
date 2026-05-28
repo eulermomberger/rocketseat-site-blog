@@ -1,5 +1,6 @@
 import { Inter, PT_Sans_Caption } from "next/font/google";
 
+import { CallToAction } from "../templates/landingPage/sections/CallToAction";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
@@ -29,6 +30,8 @@ export function Layout({ children }: LayoutProps) {
       <main className="flex-1 flex flex-col mt-10 mb-12">
         {children}
       </main>
+
+      <CallToAction />
 
       <Footer />
     </div>
