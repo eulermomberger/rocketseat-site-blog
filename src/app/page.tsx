@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Site.Set',
     description: 'Venda seus produtos como afiliado em um único lugar',
-    url: 'https://https://rocketseat-site-blog.vercel.app/og-image.jpg',
+    url: 'https://rocketseat-site-blog.vercel.app/og-image.jpg',
     siteName: 'Site.Set',
     locale: 'pt-BR',
     type: 'website',
     images: [
       {
-        url: 'https://https://rocketseat-site-blog.vercel.app/og-image.jpg',
+        url: 'https://rocketseat-site-blog.vercel.app/og-image.jpg',
         width: 800,
         height: 600,
         alt: 'Site.Set',
